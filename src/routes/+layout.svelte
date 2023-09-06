@@ -1,9 +1,15 @@
 <script lang="ts">
+  import ThemePicker from '../lib/components/ui/ThemePicker.svelte';
+
   import "../app.css";
   import BottomNavBar from "$lib/components/ui/BottomNavBar.svelte";
   import { onNavigate } from "$app/navigation";
   import { fade, slide } from "svelte/transition";
   import { page } from "$app/stores";
+  import { onMount } from "svelte";
+  import { browser } from "$app/environment";
+  import { themeStore, themes } from "$lib/stores/ui/theme.store";
+  import type { Unsubscriber } from "svelte/motion";
 
   onNavigate((navigation) => {
     if (!document.startViewTransition) return;
@@ -15,6 +21,7 @@
       });
     });
   });
+  
 </script>
 
 <div class="container max-w-md mx-auto p-4 h-screen-safe">
@@ -31,6 +38,10 @@
               in:slide={{ duration: 300, axis: "x" }}
             >
               <slot />
+              <div class="py-4">
+                <h5>Theme</h5>
+                <ThemePicker></ThemePicker>
+              </div>
             </div>
           </div>
         {/key}
