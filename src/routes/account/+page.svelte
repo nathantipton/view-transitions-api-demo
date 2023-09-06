@@ -1,1 +1,5 @@
-<h1>Account Page</h1>
+<script>
+  import { fade } from "svelte/transition";
+</script>
+
+<h4>Account Page</h4>
