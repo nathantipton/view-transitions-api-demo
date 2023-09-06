@@ -44,7 +44,7 @@
   </a>
 
   <button
-    class="fab btn btn-lg border-8 box-content border-base-200 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
+    class="fab btn btn-lg box-content border-8 border-base-200 hover:border-base-200 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
     ><i class="fab-icon fa-solid fa-lg z-50 {selectedIcon}" /></button
   >
 </div>
