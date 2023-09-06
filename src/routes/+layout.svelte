@@ -17,18 +17,25 @@
   });
 </script>
 
-<div
-  class="flex flex-col items-stretch justify-between h-screen-safe bg-base-200"
->
-  {#key $page.url.pathname}
-    <div in:fade={{ duration: 300 }}>
+<div class="container max-w-md mx-auto p-4 h-screen-safe">
+  <div class="mockup-phone w-full h-full">
+    <div class="camera" />
+    <div class="display h-full">
       <div
-        class="flex-1 overflow-y-auto p-4"
-        in:slide={{ duration: 300, axis: "x" }}
+        class="flex flex-col h-full items-stretch justify-between bg-base-200 pt-8"
       >
-        <slot />
+        {#key $page.url.pathname}
+          <div in:fade={{ duration: 300 }}>
+            <div
+              class="flex-1 overflow-y-auto p-4"
+              in:slide={{ duration: 300, axis: "x" }}
+            >
+              <slot />
+            </div>
+          </div>
+        {/key}
+        <BottomNavBar />
       </div>
     </div>
-  {/key}
-  <BottomNavBar />
+  </div>
 </div>
