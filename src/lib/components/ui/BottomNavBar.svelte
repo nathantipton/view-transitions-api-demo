@@ -44,7 +44,7 @@
   </a>
 
   <button
-    class="fab btn btn-lg box-content border-8 border-base-200 hover:border-base-200 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
+    class="z-50 btn btn-lg box-content border-8 border-base-200 hover:border-base-200 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
     ><i class="fab-icon fa-solid fa-lg z-50 {selectedIcon}" /></button
   >
 </div>
@@ -62,11 +62,6 @@
     view-transition-name: active-page;
     z-index: 1;
     @apply w-10 transform -translate-x-2.5 top-0 h-1 rounded-full bg-primary;
-  }
-
-  .fab {
-    view-transition-name: fa-button;
-    z-index: 100;
   }
 
   .fab-icon {
