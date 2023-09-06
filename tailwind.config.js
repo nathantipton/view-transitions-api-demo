@@ -8,7 +8,7 @@ export default {
         iphone: "56rem",
       },
       aspectRatio: {
-        iphone: ["9/20"],
+        iphone: ["3.07/6.33"],
       },
     },
   },
