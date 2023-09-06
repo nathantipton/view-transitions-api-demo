@@ -6,6 +6,16 @@
   import { onNavigate } from "$app/navigation";
   import { fade, slide } from "svelte/transition";
   import { page } from "$app/stores";
+  import { onMount } from "svelte";
+  import { writable } from "svelte/store";
+
+  const warningModalOpen = writable(false);
+
+  onMount(() => {
+    if (!document.startViewTransition) {
+      warningModalOpen.set(true);
+    }
+  });
 
   onNavigate((navigation) => {
     if (!document.startViewTransition) return;
@@ -45,3 +55,31 @@
     </div>
   </div>
 </div>
+<dialog id="my_modal_1" class="modal {$warningModalOpen ? 'modal-open' : ''}">
+  <div class="modal-box">
+    <h3 class="font-bold text-2xl">Oh no!</h3>
+    <p class="py-4">
+      This site is a demo of the new <a
+        class="link"
+        target="_blank"
+        href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API"
+        >View Transitions API</a
+      >
+      and your current browser
+      <span class="font-bold text-red-500 uppercase">does not</span>
+      support it. Please try again on a supported browser!
+    </p>
+    <a class="link" target="_blank" href="https://caniuse.com/view-transitions"
+      >Look up supported browsers</a
+    >
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button
+          class="btn btn-warning"
+          on:click={() => warningModalOpen.set(false)}>Close</button
+        >
+      </form>
+    </div>
+  </div>
+</dialog>
