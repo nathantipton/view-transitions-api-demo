@@ -5,6 +5,10 @@ export default {
     extend: {
       height: {
         "screen-safe": "100svh",
+        iphone: "56rem",
+      },
+      aspectRatio: {
+        iphone: ["9/20"],
       },
     },
   },
