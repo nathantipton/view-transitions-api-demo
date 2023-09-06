@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/stores";
-
+  import Notch from "./Notch.svelte";
   $: active = $page.url.pathname;
   const icons: { [key: string]: string } = {
     "/": "fa-bars",
@@ -12,39 +12,49 @@
   $: selectedIcon = icons[active] || "fa-plus";
 </script>
 
-<div class="relative flex items-center justify-between py-4 px-8 bg-base-100">
+<div class="relative flex items-stretch justify-between">
   <!-- Navigation Buttons -->
-
-  <a href="/" class="focus:outline-none" class:active={active === "/"}>
-    <i class="fa-solid fa-lg fa-home" />
-  </a>
-  <a
-    href="/bookmarks"
-    class="focus:outline-none"
-    class:active={active === "/bookmarks"}
+  <!-- Left side -->
+  <div
+    class="flex items-center justify-between py-4 pl-8 pr-2 flex-1 bg-base-100"
   >
-    <i class="fa-solid fa-lg fa-bookmark" />
-  </a>
+    <a href="/" class="focus:outline-none" class:active={active === "/"}>
+      <i class="fa-solid fa-lg fa-home" />
+    </a>
+    <a
+      href="/bookmarks"
+      class="focus:outline-none"
+      class:active={active === "/bookmarks"}
+    >
+      <i class="fa-solid fa-lg fa-bookmark" />
+    </a>
+  </div>
+
   <!-- Spacer for the FAB -->
-  <div />
+  <Notch class="fill-base-100" />
 
-  <a
-    href="/search"
-    class="focus:outline-none"
-    class:active={active === "/search"}
+  <!-- Right Side -->
+  <div
+    class="flex items-center py-4 pr-8 pl-2 justify-between flex-1 bg-base-100"
   >
-    <i class="fa-solid fa-lg fa-search" />
-  </a>
-  <a
-    href="/account"
-    class="focus:outline-none"
-    class:active={active === "/account"}
-  >
-    <i class="fa-solid fa-lg fa-user" />
-  </a>
+    <a
+      href="/search"
+      class="focus:outline-none"
+      class:active={active === "/search"}
+    >
+      <i class="fa-solid fa-lg fa-search" />
+    </a>
+    <a
+      href="/account"
+      class="focus:outline-none"
+      class:active={active === "/account"}
+    >
+      <i class="fa-solid fa-lg fa-user" />
+    </a>
+  </div>
 
   <button
-    class="z-50 btn btn-lg box-content border-8 border-base-200 hover:border-base-200 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
+    class="z-50 btn btn-lg box-content hover:border-base-200 btn-circle btn-primary absolute transform -top-8 left-0 right-0 mx-auto"
     ><i class="fab-icon fa-solid fa-lg z-50 {selectedIcon}" /></button
   >
 </div>
@@ -66,5 +76,11 @@
 
   .fab-icon {
     view-transition-name: fab-icon;
+  }
+
+  .notch::before {
+    content: "";
+    position: absolute;
+    @apply w-24 aspect-square -top-14 transform -translate-x-2 mx-auto left-0 right-0 rounded-full bg-base-200;
   }
 </style>
