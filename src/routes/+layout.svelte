@@ -17,7 +17,9 @@
   });
 </script>
 
-<div class="flex flex-col items-stretch justify-between h-screen-safe">
+<div
+  class="flex flex-col items-stretch justify-between h-screen-safe bg-base-200"
+>
   {#key $page.url.pathname}
     <div in:fade={{ duration: 300 }}>
       <div

@@ -1,10 +1,18 @@
-<script class="ts">
+<script lang="ts">
   import { page } from "$app/stores";
 
   $: active = $page.url.pathname;
+  const icons: { [key: string]: string } = {
+    "/": "fa-bars",
+    "/bookmarks": "fa-bookmark",
+    "/search": "fa-search",
+    "/account": "fa-times",
+  };
+
+  $: selectedIcon = icons[active] || "fa-plus";
 </script>
 
-<div class="relative flex items-center justify-between py-4 px-8 bg-base-300">
+<div class="relative flex items-center justify-between py-4 px-8 bg-base-100">
   <!-- Navigation Buttons -->
 
   <a href="/" class="focus:outline-none" class:active={active === "/"}>
@@ -36,8 +44,8 @@
   </a>
 
   <button
-    class="fab btn btn-lg border-8 box-content border-base-100 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
-    ><i class="fa-solid fa-lg fa-plus z-50" /></button
+    class="fab btn btn-lg border-8 box-content border-base-200 btn-circle btn-primary absolute transform -top-10 left-0 right-0 mx-auto"
+    ><i class="fab-icon fa-solid fa-lg z-50 {selectedIcon}" /></button
   >
 </div>
 
@@ -46,18 +54,22 @@
     @apply text-base-content text-opacity-40 transition-all;
   }
   .active {
-    @apply text-white text-opacity-100;
+    @apply text-primary dark:text-white text-opacity-100;
   }
   .active::before {
     content: "";
     position: absolute;
     view-transition-name: active-page;
     z-index: 1;
-    @apply w-10 transform -translate-x-2.5 top-0 h-1 rounded-full bg-white;
+    @apply w-10 transform -translate-x-2.5 top-0 h-1 rounded-full bg-primary dark:bg-white;
   }
 
   .fab {
     view-transition-name: fa-button;
     z-index: 100;
+  }
+
+  .fab-icon {
+    view-transition-name: fab-icon;
   }
 </style>
