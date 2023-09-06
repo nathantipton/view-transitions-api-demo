@@ -54,14 +54,14 @@
     @apply text-base-content text-opacity-40 transition-all;
   }
   .active {
-    @apply text-primary dark:text-white text-opacity-100;
+    @apply text-primary  text-opacity-100;
   }
   .active::before {
     content: "";
     position: absolute;
     view-transition-name: active-page;
     z-index: 1;
-    @apply w-10 transform -translate-x-2.5 top-0 h-1 rounded-full bg-primary dark:bg-white;
+    @apply w-10 transform -translate-x-2.5 top-0 h-1 rounded-full bg-primary;
   }
 
   .fab {
