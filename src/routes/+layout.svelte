@@ -37,16 +37,11 @@
         class="flex flex-col h-full items-stretch justify-between bg-base-200 pt-8"
       >
         {#key $page.url.pathname}
-          <div class="flex-1" in:fade={{ duration: 300 }}>
-            <div
-              class="flex-1 overflow-y-auto p-4 h-full"
-              in:slide={{ duration: 300, axis: "x" }}
-            >
-              <slot />
-              <div class="py-4">
-                <h5>Theme</h5>
-                <ThemePicker />
-              </div>
+          <div class="flex-1 p-4" in:fade={{ duration: 300 }}>
+            <slot />
+            <div class="py-4">
+              <h5>Theme</h5>
+              <ThemePicker />
             </div>
           </div>
         {/key}
